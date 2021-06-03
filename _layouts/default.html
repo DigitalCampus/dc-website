@@ -6,6 +6,30 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<script type='text/javascript'>
+		//some default pre init
+		var Countly = Countly || {};
+		Countly.q = Countly.q || [];
+		
+		//provide countly initialization parameters
+		Countly.app_key = 'a5602af2110b0518f1f1d57deb7551df67fb138c';
+		Countly.url = 'https://countly.oppia-mobile.org';
+		
+		Countly.q.push(['track_sessions']);
+		Countly.q.push(['track_pageview',location.pathname+location.hash]);
+		Countly.q.push(['track_clicks']);
+		Countly.q.push(['track_errors']);
+		
+		//load countly script asynchronously
+		(function() {
+		   var cly = document.createElement('script'); cly.type = 'text/javascript';
+		   cly.async = true;
+		   //enter url of script here
+		   cly.src = 'https://countly.oppia-mobile.org/sdk/web/countly.min.js';
+		   cly.onload = function(){Countly.init()};
+		   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cly, s);
+		})();
+	</script>
   </head>
   <body>
   	{% include header.html %}
@@ -17,5 +41,6 @@
     
     {% include footer.html %}
 
+	<noscript><img src='https://countly.oppia-mobile.org/pixel.png?app_key=a5602af2110b0518f1f1d57deb7551df67fb138c&begin_session=1'/></noscript>
   </body>
 </html>
